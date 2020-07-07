@@ -6,11 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello world"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="297dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="156dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/postPictureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Post Picture"
+        app:layout_constraintEnd_toEndOf="@+id/takePictureButton"
+        app:layout_constraintStart_toStartOf="@+id/takePictureButton"
+        app:layout_constraintTop_toBottomOf="@+id/takePictureButton" />
+
+    <Button
+        android:id="@+id/takePictureButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Take Picture"
+        app:layout_constraintEnd_toEndOf="@+id/postDescription"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/postDescription"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <EditText
+        android:id="@+id/postDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Post Description"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
