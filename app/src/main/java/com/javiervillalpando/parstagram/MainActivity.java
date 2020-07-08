@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +23,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.javiervillalpando.parstagram.fragments.ComposeFragment;
+import com.javiervillalpando.parstagram.fragments.ProfileFragment;
+import com.javiervillalpando.parstagram.fragments.TimelineFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -34,28 +39,35 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
-    BottomNavigationView bottomNavigationMenu = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+    //BottomNavigationView bottomNavigationMenu = findViewById(R.id.bottom_navigation);
+    private BottomNavigationView bottomNavigationMenu;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        bottomNavigationMenu = findViewById(R.id.bottom_navigation);
         bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.home_navigation:
-                        return true;
+                        fragment = new TimelineFragment();
+                        break;
                     case R.id.create_post_navigation:
-                        return true;
+                        fragment = new ComposeFragment();
+                        break;
                     case R.id.profile_navigation:
-                        return true;
-                    default: return true;
+                        fragment = new ProfileFragment();
+                        break;
                 }
+                fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
+                return true;
             }
         });
-
+        bottomNavigationMenu.setSelectedItemId(R.id.home_navigation);
     }
 
 }
