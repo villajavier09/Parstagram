@@ -41,7 +41,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
-    //BottomNavigationView bottomNavigationMenu = findViewById(R.id.bottom_navigation);
     private BottomNavigationView bottomNavigationMenu;
     final FragmentManager fragmentManager = getSupportFragmentManager();
 

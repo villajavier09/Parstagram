@@ -60,14 +60,11 @@ public class TimelineFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
+
                 fetchTimelineAsync(0);
             }
         });
         queryPosts();
-
     }
     protected void queryPosts(){
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
@@ -92,7 +89,7 @@ public class TimelineFragment extends Fragment {
 
         });
     }
-
+    //Method for refreshing timeline
     public void fetchTimelineAsync(int page) {
         adapter.clear();
         queryPosts();
