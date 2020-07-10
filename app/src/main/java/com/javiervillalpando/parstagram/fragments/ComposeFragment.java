@@ -161,6 +161,7 @@ public class ComposeFragment extends Fragment {
                 Toast.makeText(getContext(),"Post saved",Toast.LENGTH_SHORT);
                 postDescription.setText("");
                 image.setImageResource(0);
+
             }
         });
     }

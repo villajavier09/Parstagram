@@ -37,6 +37,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         this.context = context;
         this.posts = posts;
     }
+    public void clear() {
+        posts.clear();
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {

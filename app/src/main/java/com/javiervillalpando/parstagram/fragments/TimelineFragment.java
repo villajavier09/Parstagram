@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +31,7 @@ public class TimelineFragment extends Fragment {
 
     public static final String TAG = "Timeline Fragment";
     RecyclerView timelinePosts;
+    private SwipeRefreshLayout swipeContainer;
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
 
@@ -52,6 +56,16 @@ public class TimelineFragment extends Fragment {
 
         timelinePosts.setAdapter(adapter);
         timelinePosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                fetchTimelineAsync(0);
+            }
+        });
         queryPosts();
 
     }
@@ -79,5 +93,10 @@ public class TimelineFragment extends Fragment {
         });
     }
 
+    public void fetchTimelineAsync(int page) {
+        adapter.clear();
+        queryPosts();
+        swipeContainer.setRefreshing(false);
+    }
 }
 
