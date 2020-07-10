@@ -55,7 +55,7 @@ public class TimelineFragment extends Fragment {
         queryPosts();
 
     }
-    private void queryPosts(){
+    protected void queryPosts(){
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);

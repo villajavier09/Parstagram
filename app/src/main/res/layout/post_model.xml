@@ -7,8 +7,10 @@
 
     <ImageView
         android:id="@+id/postImage"
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postUsername"
         tools:srcCompat="@tools:sample/avatars" />
 
