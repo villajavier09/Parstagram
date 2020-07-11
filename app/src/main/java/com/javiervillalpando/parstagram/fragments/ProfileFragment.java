@@ -48,35 +48,7 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-    /*
-    @Override
-    protected void queryPosts() {
-        timelinePosts = getView().findViewById(R.id.profileTimeline);
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
-        query.setLimit(20);
-        query.addDescendingOrder(Post.KEY_CREATED_AT);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "issue loading timeline", e);
-                    return;
-                }
-                for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-                }
 
-                // save received posts to list and notify adapter of new data
-                allPosts.addAll(posts);
-                adapter.notifyDataSetChanged();
-            }
-
-        });
-    }
-
-     */
     public void goToLoginActivity(){
         Intent i = new Intent(getActivity(),LoginActivity.class);
         startActivity(i);

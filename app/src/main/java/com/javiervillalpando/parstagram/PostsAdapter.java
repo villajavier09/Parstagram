@@ -65,6 +65,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             if (image != null){
                 Glide.with(context).load(image.getUrl()).into(postImage);
             }
+            //Goes to post detail view after clicking on post
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //Navigate to post details activity

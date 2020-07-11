@@ -43,7 +43,6 @@ public class PostDetailsFragment extends Fragment {
         postUsername.setText(post.getUser().getUsername());
         postDescription.setText(post.getDescription());
         postTimestamp.setText(TimeFormatter.getTimeDifference(post.getKeyTime()));
-
         ParseFile image = post.getImage();
         if (image != null){
             Glide.with(getContext()).load(image.getUrl()).into(postImage);
